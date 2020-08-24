@@ -8,10 +8,6 @@ const app = express();
 const cors = require('cors');
 app.use(cors({optionSuccessStatus: 200}));  // some legacy browsers choke on 204
 
-// your first API endpoint... 
-app.use((req, res) => {
-    res.redirect('/api/whoami');
-});
 
 app.get("/api/whoami", function (req, res) {
     // console.log(req.header('accept-language'));
@@ -21,6 +17,11 @@ app.get("/api/whoami", function (req, res) {
         software: req.header('user-agent')
     });
 });
+// Redirect all endpoints to given endpoint
+app.use((req, res) => {
+    res.redirect('/api/whoami');
+});
+
 
 // listen for requests :)
 app.listen(PORT, () => {
