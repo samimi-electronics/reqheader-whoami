@@ -10,7 +10,6 @@ app.use(cors({optionSuccessStatus: 200}));  // some legacy browsers choke on 204
 
 
 app.get("/api/whoami", function (req, res) {
-    // console.log(req.header('accept-language'));
     res.json({
         ipaddress: req.header('x-forwarded-for'),
         language: req.header('accept-language'),
@@ -25,5 +24,5 @@ app.use((req, res) => {
 
 // listen for requests :)
 app.listen(PORT, () => {
-    console.log('Your app is listening on port ' + listener.address().port);
+    console.log(`Your app is listening on port ${PORT}`);
 });
